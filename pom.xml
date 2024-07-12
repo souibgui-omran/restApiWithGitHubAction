@@ -60,6 +60,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
+        <finalName>rest-api-image</finalName>
     </build>
 
 </project>
