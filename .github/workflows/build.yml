@@ -29,6 +29,12 @@ jobs:
           cache: maven
       - name: Build with Maven
         run: mvn -B package --file pom.xml
+
+      - name: SonarQube Scan
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: mvn sonar:sonar -Dsonar.projectKey=souibgui-omran_restApiWithGitHubAction -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=souibgui-omran -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+
       - name: Build and Push docker Image
         uses: mr-smithers-excellent/docker-build-push@v5
         with:
